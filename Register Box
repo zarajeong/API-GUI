@@ -1,0 +1,80 @@
+How to Make Simple GUI Register Box with Tkinker Python ?
+
+from tkinter import * #Librray
+import tkinter.font #Font
+
+#Body
+root = Tk() 
+root.geometry("260x456")
+root["bg"]="#DEB887"
+
+changefont = tkinter.font.Font(size=20) #Font
+title = Label(root,text="SIGN UP",fg="#2E8B57",bg="#DEB887",font=changefont) #Title
+title.place(x=75, y=5) #Tittle.Size
+
+#Frame.Size
+labelfr = LabelFrame(root,text="result",padx=20,pady=20)
+labelfr.place(x=120, y=380)
+
+#Inputs
+n = Label(root,text="First Name",bg="#DEB887")
+n2= Label(root,text="Last Name",bg="#DEB887")
+u = Label(root,text="Username",bg="#DEB887")
+e = Label(root,text="Email",bg="#DEB887")
+p = Label(root,text="Password",bg="#DEB887")
+g = Label(root,text="Gender",bg="#DEB887")
+
+#Boxes
+b1 = Entry(root,width=35,bg="#FFF8DC")
+b2 = Entry(root,width=35,bg="#FFF8DC")
+b3 = Entry(root,width=35,bg="#FFF8DC")
+b4 = Entry(root,width=35,bg="#FFF8DC")
+b5 = Entry(root,width=35,bg="#FFF8DC") 
+b6 = Entry(root,width=35,bg="#FFF8DC",show="*")
+
+#Inputs.Size
+n.place(x=20, y=50)
+n2.place(x=20,y=90)
+u.place(x=20, y=130)
+e.place(x=20, y=170)
+p.place(x=20, y=210)
+g.place(x=20, y=250)
+
+#Boxes.Size
+b1.place(x=20, y=70)
+b2.place(x=20, y=110)
+b4.place(x=20, y=150)
+b5.place(x=20, y=190)
+b6.place(x=20, y=230)
+
+#Options
+r = StringVar() 
+r.set("male")
+rb = Radiobutton(root,text = "male",variable=r,value="male",bg="#DEB887").place(x=18, y=270 )
+rb2 = Radiobutton(root,text = "female",variable=r,value="female",bg="#DEB887").place(x=80, y=270 )
+
+t = StringVar() 
+t.set("Accept Terms and Conditions")
+t = Radiobutton(root,text = "Accept Terms and Conditions",variable=t,value="Accept Terms and Conditions",bg="#DEB887").place(x=28, y=318)
+
+#Recall
+def cetak():
+    class xxx:
+        def __init__(self,n,n2,u,e,p,g):
+            self.n = n
+            self.n2= n2
+            self.u = u
+            self.e = e
+            self.p = p
+            self.g = g
+        def result(self):
+            lbl = Label(labelfr,text="first name ="+self.n+"\nlast name ="+self.n2+"\nusername = "+self.u+"\nemail ="+self.e+"\npassword ="+self.p+"\ngender ="+self.g).grid()
+        s = xxx(b1.get(),b2.get(),b3.get(),b4.get(),b5.get(),r.get(),t.get())
+    s.result()
+
+btn = Button(root,text="submit",fg="#FFFAFA",bg="#F08080",command=cetak).place(x=105, y=350) #Submit
+txt = Label(root,text="Have an account ?",bg="#DEB887") #Q
+txt.place(x=73, y=413) #Q.Size
+btn2 = Button(root,text="LOG IN",bg="#00BFFF",command=cetak).place(x=187, y=410) #LogIn
+
+root.mainloop()
